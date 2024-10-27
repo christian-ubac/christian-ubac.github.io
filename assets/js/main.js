@@ -43,7 +43,7 @@
       : selectBody.classList.remove("scrolled");
   }
 
-  // Initialize Typed.js
+  // Initialize Typed.js with normal speed
   const selectTyped = document.querySelector(".typed");
   if (selectTyped) {
     let typed_strings = selectTyped.getAttribute("data-typed-items");
@@ -51,9 +51,9 @@
     new Typed(".typed", {
       strings: typed_strings,
       loop: true,
-      typeSpeed: 100,
-      backSpeed: 50,
-      backDelay: 2000,
+      typeSpeed: 70, // Normal typing speed
+      backSpeed: 40, // Smooth backspacing speed
+      backDelay: 1200, // Slightly reduced delay
     });
   }
 
@@ -187,7 +187,7 @@
   // Animation on scroll init
   function aos_init() {
     AOS.init({
-      duration: 1000,
+      duration: 600,
       easing: "ease-in-out",
       once: true,
       mirror: false,
@@ -197,32 +197,28 @@
   window.addEventListener("load", aos_init);
 })();
 
-/**
- * Init typed.js
- */
-const selectTyped = document.querySelector(".typed");
-if (selectTyped) {
-  let typed_strings = selectTyped.getAttribute("data-typed-items");
-  typed_strings = typed_strings.split(",");
-  new Typed(".typed", {
-    strings: typed_strings,
-    loop: true,
-    typeSpeed: 100,
-    backSpeed: 50,
-    backDelay: 2000,
-  });
-}
-
-/**
- *  Header scroll class toggling
- */
-document.addEventListener("scroll", toggleScrolled);
-
-/**
- * Particle.js initialization
- */
 document.addEventListener("DOMContentLoaded", function () {
-  particlesJS.load("particles-js", "particles.json", function () {
-    console.log("Particles.js loaded");
-  });
+  var $container = document.querySelector(".isotope-container");
+  if ($container) {
+    var iso = new Isotope($container, {
+      itemSelector: ".portfolio-item",
+      layoutMode: "masonry",
+      filter: "*",
+    });
+    // Bind filter button click
+    var filtersElem = document.querySelector(".isotope-filters");
+    filtersElem.addEventListener("click", function (event) {
+      if (!event.target.matches("li")) {
+        return;
+      }
+      var filterValue = event.target.getAttribute("data-filter");
+      iso.arrange({ filter: filterValue });
+      // Change active class on filter buttons
+      var filterButtons = filtersElem.querySelectorAll("li");
+      filterButtons.forEach(function (button) {
+        button.classList.remove("filter-active");
+      });
+      event.target.classList.add("filter-active");
+    });
+  }
 });
