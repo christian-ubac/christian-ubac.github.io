@@ -197,6 +197,8 @@
   window.addEventListener("load", aos_init);
 })();
 
+// JavaScript to create wave-like effect
+
 document.addEventListener("DOMContentLoaded", function () {
   var $container = document.querySelector(".isotope-container");
   if ($container) {
@@ -205,6 +207,7 @@ document.addEventListener("DOMContentLoaded", function () {
       layoutMode: "masonry",
       filter: "*",
     });
+
     // Bind filter button click
     var filtersElem = document.querySelector(".isotope-filters");
     filtersElem.addEventListener("click", function (event) {
