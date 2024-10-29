@@ -159,6 +159,24 @@
       preloader.remove();
     });
   }
+  const colors = [
+    "rgb(126, 157, 165)", // Color 1
+    "rgb(92, 107, 192)", // Color 2
+    "rgb(25, 138, 101)", // Color 3
+  ];
+  let colorIndex = 0;
+
+  // Function to change the --background-color variable
+  function changeBackgroundColor() {
+    document.documentElement.style.setProperty(
+      "--background-color",
+      colors[colorIndex]
+    );
+    colorIndex = (colorIndex + 1) % colors.length; // Loop back to the first color after the last
+  }
+
+  // Set interval to change the background color every 3 seconds
+  setInterval(changeBackgroundColor, 3000);
 
   // Scroll top button
   const scrollTopButton = document.querySelector(".scroll-top");
