@@ -197,8 +197,6 @@
   window.addEventListener("load", aos_init);
 })();
 
-// JavaScript to create wave-like effect
-
 document.addEventListener("DOMContentLoaded", function () {
   var $container = document.querySelector(".isotope-container");
   if ($container) {

@@ -803,6 +803,41 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+/* Base styles for the animated image section */
+.animated-image-section {
+  position: absolute; /* or relative, depending on your layout */
+  right: 0; /* Aligns the section to the right */
+  top: 50%; /* Centers vertically */
+  transform: translateY(-50%);
+  width: 40%; /* Adjust width for larger screens */
+  overflow: hidden; /* Prevents overflow of images */
+  z-index: 1; /* Ensures it's above other content */
+}
+
+#animated-image {
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+  transition: opacity 1s ease-in-out;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .animated-image-section {
+    position: relative; /* Change to relative for mobile */
+    top: auto; /* Remove vertical centering */
+    right: 0; /* Still aligns to the right */
+    width: 100%; /* Full width on mobile */
+    transform: none; /* Reset transform for mobile */
+    margin-top: 20px; /* Add margin for spacing */
+  }
+}
+
+/* Optional: If you want to hide the animated section on very small screens */
+@media (max-width: 576px) {
+  .animated-image-section {
+    display: none; /* Hide for extra small devices */
+  }
+}
 
 /* Glassmorphic effect for content */
 .about .content {
