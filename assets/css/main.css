@@ -967,11 +967,28 @@ section,
 /*--------------------------------------------------------------
 # Skills Section
 --------------------------------------------------------------*/
+.skill {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.skill i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.skill-icon {
+  width: 30px; /* Adjusted size for a balanced appearance */
+  height: 30px;
+  margin-right: 10px;
+}
 .skills .progress {
-  height: 60px;
-  display: block;
-  background: none;
-  border-radius: 0;
+  flex-grow: 1;
+  background-color: #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-left: 10px;
 }
 
 .skills .progress .skill {
@@ -996,8 +1013,12 @@ section,
 }
 
 .skills .progress-bar {
-  width: 1px;
-  height: 10px;
+  background-color: #0044ff; /* Green color */
+  height: 100%;
+  border-radius: 4px;
+  color: white;
+  text-align: right;
+  padding-right: 5px;
 }
 
 /*--------------------------------------------------------------
