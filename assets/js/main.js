@@ -1,29 +1,15 @@
 (function () {
   "use strict";
 
-  // Function to create the sparkle effect on specified elements
-  function createSparkleEffect(element) {
-    const colors = ["#ffffff", "#ff00ff", "#00ffff", "#ffff00"];
-    let colorIndex = 0;
-
-    setInterval(() => {
-      element.style.textShadow = `
-        0 0 5px ${colors[colorIndex]},
-        0 0 10px ${colors[colorIndex]},
-        0 0 15px ${colors[colorIndex]},
-        0 0 20px ${colors[colorIndex]},
-        0 0 25px ${colors[colorIndex]},
-        0 0 30px ${colors[colorIndex]},
-        0 0 35px ${colors[colorIndex]}
-      `;
-      colorIndex = (colorIndex + 1) % colors.length;
-    }, 500); // Sparkle effect updates every 500ms
-  }
-
-  // Apply the sparkle effect to all elements with the class "sparkle-text"
+  /**
+   * Professional text styling without excessive effects
+   */
   document.addEventListener("DOMContentLoaded", () => {
+    // Smooth fade-in for hero text
     const sparkleElements = document.querySelectorAll(".sparkle-text");
-    sparkleElements.forEach((element) => createSparkleEffect(element));
+    sparkleElements.forEach((element) => {
+      element.style.opacity = "1";
+    });
   });
 
   /**
