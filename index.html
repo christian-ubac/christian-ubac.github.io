@@ -122,49 +122,73 @@
               aria-hidden="true"
             ></span>
           </p>
-          <div class="social-links">
+          <div class="social-links" role="navigation" aria-label="Social media links">
             <a
               href="https://www.facebook.com/profile.php?id=100069360927169"
               class="social-icon"
               data-tooltip="Facebook"
-              ><i class="bi bi-facebook"></i
-            ></a>
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my Facebook profile"
+            >
+              <i class="bi bi-facebook" aria-hidden="true"></i>
+            </a>
             <a
               href="https://x.com/Zenitsous45?s=09"
               class="social-icon"
               data-tooltip="Twitter"
-              ><i class="bi bi-twitter-x"></i
-            ></a>
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my Twitter profile"
+            >
+              <i class="bi bi-twitter-x" aria-hidden="true"></i>
+            </a>
             <a
               href="https://github.com/christian-ubac"
               class="social-icon"
               data-tooltip="GitHub"
-              ><i class="bi bi-github"></i
-            ></a>
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Visit my GitHub profile"
+            >
+              <i class="bi bi-github" aria-hidden="true"></i>
+            </a>
             <a
               href="https://discord.com/channels/@me"
               class="social-icon"
               data-tooltip="Discord"
-              ><i class="bi bi-discord"></i
-            ></a>
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Connect with me on Discord"
+            >
+              <i class="bi bi-discord" aria-hidden="true"></i>
+            </a>
+          </div>
+          <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
+            <a href="portfolio.html" class="btn-modern">View My Work</a>
+            <a href="contact.html" class="btn-outline">Get In Touch</a>
           </div>
         </div>
       </section>
       <!-- /Hero Section -->
     </main>
 
-    <footer id="footer" class="footer">
+    <footer id="footer" class="footer" role="contentinfo">
       <div class="container">
-        <div class="copyright">
-          <span>Copyright</span>
-          <strong class="px-1 sitename">Christian|Ubac Personal Website</strong>
-          <span>All Rights Reserved</span>
-        </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+        <div class="footer-content">
+          <div class="copyright">
+            <p>
+              &copy; <span id="currentYear">2025</span> 
+              <strong class="sitename">Christian Ubac</strong>
+              <span class="separator">|</span>
+              <span>All Rights Reserved</span>
+            </p>
+          </div>
+          <div class="footer-links">
+            <a href="about.html" class="footer-link">About</a>
+            <a href="portfolio.html" class="footer-link">Portfolio</a>
+            <a href="contact.html" class="footer-link">Contact</a>
+          </div>
         </div>
       </div>
     </footer>

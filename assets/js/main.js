@@ -5,15 +5,109 @@
    * Enhanced UI/UX animations and interactions
    */
   document.addEventListener("DOMContentLoaded", () => {
-    // Smooth fade-in for hero text
-    const sparkleElements = document.querySelectorAll(".sparkle-text");
-    sparkleElements.forEach((element) => {
-      element.style.opacity = "1";
-    });
-
-    // Smooth scroll animations only
+    // Initialize all features
+    initHeroAnimations();
     initSmoothScroll();
+    initScrollAnimations();
+    updateCurrentYear();
+    initImageLazyLoading();
+    initAccessibilityFeatures();
   });
+
+  /**
+   * Update footer year automatically
+   */
+  function updateCurrentYear() {
+    const yearElement = document.getElementById('currentYear');
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
+    }
+  }
+
+  /**
+   * Initialize hero section animations
+   */
+  function initHeroAnimations() {
+    const heroTitle = document.querySelector('.hero-title');
+    const heroSubtitle = document.querySelector('.hero-subtitle');
+    
+    if (heroTitle) {
+      setTimeout(() => {
+        heroTitle.style.opacity = '1';
+        heroTitle.style.transform = 'translateY(0)';
+      }, 300);
+    }
+    
+    if (heroSubtitle) {
+      setTimeout(() => {
+        heroSubtitle.style.opacity = '1';
+        heroSubtitle.style.transform = 'translateY(0)';
+      }, 600);
+    }
+  }
+
+  /**
+   * Lazy loading for images
+   */
+  function initImageLazyLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.classList.add('loaded');
+          observer.unobserve(img);
+        }
+      });
+    });
+    
+    images.forEach(img => imageObserver.observe(img));
+  }
+
+  /**
+   * Scroll-based animations
+   */
+  function initScrollAnimations() {
+    const animateOnScroll = document.querySelectorAll('.animate-on-scroll');
+    
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animated');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    animateOnScroll.forEach(el => scrollObserver.observe(el));
+  }
+
+  /**
+   * Accessibility improvements
+   */
+  function initAccessibilityFeatures() {
+    // Add keyboard navigation for custom elements
+    document.querySelectorAll('.social-icon').forEach(link => {
+      link.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          link.click();
+        }
+      });
+    });
+    
+    // Focus visible for keyboard users
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Tab') {
+        document.body.classList.add('keyboard-nav');
+      }
+    });
+    
+    document.addEventListener('mousedown', () => {
+      document.body.classList.remove('keyboard-nav');
+    });
+  }
 
 
 
@@ -59,25 +153,46 @@
       : selectBody.classList.remove("scrolled");
   }
 
-  // Initialize Typed.js with normal speed
+  // Initialize Typed.js with enhanced settings
   const selectTyped = document.querySelector(".typed");
   if (selectTyped) {
     let typed_strings = selectTyped.getAttribute("data-typed-items");
-    typed_strings = typed_strings.split(",");
-    new Typed(".typed", {
-      strings: typed_strings,
-      loop: true,
-      typeSpeed: 70, // Normal typing speed
-      backSpeed: 40, // Smooth backspacing speed
-      backDelay: 1200, // Slightly reduced delay
-    });
+    typed_strings = typed_strings.split(",").map(s => s.trim());
+    
+    setTimeout(() => {
+      new Typed(".typed", {
+        strings: typed_strings,
+        loop: true,
+        typeSpeed: 80,
+        backSpeed: 50,
+        backDelay: 2000,
+        startDelay: 500,
+        fadeOut: false,
+        showCursor: true,
+        cursorChar: '|',
+        autoInsertCss: true,
+      });
+    }, 800);
   }
 
   // Enhanced UI interactions
-  // Add smooth hover effects to all links
-  document.querySelectorAll('a').forEach(link => {
-    link.addEventListener('mouseenter', function() {
-      this.style.transition = 'all 0.3s ease';
+  // Add ripple effect to buttons
+  document.querySelectorAll('.btn-modern, .btn-outline').forEach(button => {
+    button.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      ripple.classList.add('ripple');
+      this.appendChild(ripple);
+      
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+      
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      
+      setTimeout(() => ripple.remove(), 600);
     });
   });
 
