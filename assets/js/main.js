@@ -15,6 +15,7 @@
     initPerformanceMonitoring();
     initDynamicNavigation();
     initSmartPreloader();
+    initParallaxEffect();
   });
   
   /**
@@ -442,5 +443,73 @@ document.addEventListener("DOMContentLoaded", function () {
       });
       event.target.classList.add("filter-active");
     });
+  }
+  
+  /**
+   * Parallax scrolling effect for hero section
+   */
+  function initParallaxEffect() {
+    const heroSection = document.querySelector('.hero');
+    const heroImage = document.querySelector('.hero img');
+    const heroTitle = document.querySelector('.hero h1');
+    const heroText = document.querySelector('.hero p');
+    const heroSocial = document.querySelector('.hero .social-links');
+    const heroCta = document.querySelector('.hero-cta');
+    
+    if (!heroSection) return;
+    
+    let ticking = false;
+    
+    function updateParallax() {
+      const scrolled = window.pageYOffset;
+      const heroHeight = heroSection.offsetHeight;
+      
+      // Only apply parallax if we're within the hero section view
+      if (scrolled < heroHeight) {
+        const parallaxSpeed = 0.5;
+        const contentSpeed = 0.3;
+        
+        // Parallax background image - moves slower
+        if (heroImage) {
+          heroImage.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        }
+        
+        // Parallax content - moves at different speeds for depth
+        if (heroTitle) {
+          heroTitle.style.transform = `translateY(${scrolled * contentSpeed * 0.8}px)`;
+          heroTitle.style.opacity = 1 - (scrolled / heroHeight) * 0.8;
+        }
+        
+        if (heroText) {
+          heroText.style.transform = `translateY(${scrolled * contentSpeed * 1.2}px)`;
+          heroText.style.opacity = 1 - (scrolled / heroHeight) * 1;
+        }
+        
+        if (heroSocial) {
+          heroSocial.style.transform = `translateY(${scrolled * contentSpeed * 1.5}px)`;
+          heroSocial.style.opacity = 1 - (scrolled / heroHeight) * 1.2;
+        }
+        
+        if (heroCta) {
+          heroCta.style.transform = `translateY(${scrolled * contentSpeed * 1.8}px)`;
+          heroCta.style.opacity = 1 - (scrolled / heroHeight) * 1.5;
+        }
+      }
+      
+      ticking = false;
+    }
+    
+    function requestTick() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+    
+    // Throttled scroll event
+    window.addEventListener('scroll', requestTick, { passive: true });
+    
+    // Initial update
+    updateParallax();
   }
 });
