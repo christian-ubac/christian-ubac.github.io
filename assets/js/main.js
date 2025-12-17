@@ -12,7 +12,91 @@
     updateCurrentYear();
     initImageLazyLoading();
     initAccessibilityFeatures();
+    initPerformanceMonitoring();
+    initDynamicNavigation();
+    initSmartPreloader();
   });
+  
+  /**
+   * Performance monitoring and optimization
+   */
+  function initPerformanceMonitoring() {
+    // Monitor page load performance
+    if ('PerformanceObserver' in window) {
+      const observer = new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          // Log performance metrics for optimization
+          if (entry.entryType === 'largest-contentful-paint') {
+            console.log('LCP:', entry.startTime);
+          }
+        }
+      });
+      observer.observe({ entryTypes: ['largest-contentful-paint'] });
+    }
+    
+    // Prefetch important pages on hover
+    document.querySelectorAll('a[href$=".html"]').forEach(link => {
+      link.addEventListener('mouseenter', function() {
+        const url = this.href;
+        const prefetchLink = document.createElement('link');
+        prefetchLink.rel = 'prefetch';
+        prefetchLink.href = url;
+        document.head.appendChild(prefetchLink);
+      }, { once: true });
+    });
+  }
+  
+  /**
+   * Smart preloader with progress
+   */
+  function initSmartPreloader() {
+    const preloader = document.querySelector('#preloader');
+    if (!preloader) return;
+    
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += Math.random() * 30;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(interval);
+      }
+    }, 100);
+    
+    window.addEventListener('load', () => {
+      progress = 100;
+      clearInterval(interval);
+    });
+  }
+  
+  /**
+   * Dynamic navigation highlighting
+   */
+  function initDynamicNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.navmenu a[href^="#"]');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '-20% 0px -70% 0px',
+      threshold: 0
+    };
+    
+    const observerCallback = (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${entry.target.id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    };
+    
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    sections.forEach(section => observer.observe(section));
+  }
 
   /**
    * Update footer year automatically

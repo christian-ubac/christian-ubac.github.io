@@ -19,17 +19,59 @@
   --nav-font: "Poppins", sans-serif;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+/* Professional Design System - Color Tokens */
 :root {
-  --background-color: #0a0e27; /* Modern dark background */
+  /* Base Colors */
+  --background-color: #0a0e27;
   --background-gradient: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1729 100%);
   --default-color: #e4e4e7;
   --heading-color: #f0f0f3;
+  
+  /* Brand Colors */
   --accent-color: #00d9ff;
   --accent-secondary: #7c3aed;
+  --accent-tertiary: #10b981;
   --surface-color: rgba(255, 255, 255, 0.05);
   --contrast-color: #ffffff;
   --glow-color: #00d9ff;
+  
+  /* Semantic Colors */
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --info-color: #3b82f6;
+  
+  /* Typography Scale */
+  --font-display: 'Inter', 'Poppins', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+  --font-mono: 'Fira Code', monospace;
+  
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-glow: 0 0 20px rgba(0, 217, 255, 0.3);
+  
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Navigation Colors */
   --nav-color: #a8a9b4;
@@ -64,14 +106,36 @@
 /*--------------------------------------------------------------
 # General Styling & Shared Classes
 --------------------------------------------------------------*/
+/* Skip to main content link for accessibility */
+.skip-to-main {
+  position: absolute;
+  left: -9999px;
+  z-index: 999999;
+  padding: 1em;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.skip-to-main:focus {
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1em;
+}
+
 body {
-  font-family: var(--default-font);
+  font-family: var(--font-body);
   background: var(--background-gradient);
   color: var(--default-color);
   transition: all 0.5s ease;
   position: relative;
   line-height: 1.6;
   overflow-x: hidden;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body::before {
@@ -320,17 +384,41 @@ h6 {
   margin-right: 8px;
 }
 
+.profile-section {
+  text-align: center;
+  padding: var(--space-md) 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: var(--space-lg);
+}
+
+.tagline {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: var(--space-xs) 0 0;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
 .header .logo h1,
 .site-logo {
-  font-size: 24px;
+  font-size: 26px;
   margin: 0;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo-first {
   background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  letter-spacing: 0.5px;
-  text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
+}
+
+.logo-last {
+  color: var(--contrast-color);
+  margin-left: 5px;
 }
 
 .header .social-links {
@@ -501,13 +589,31 @@ h6 {
   color: var(--contrast-color);
 }
 
+.navmenu a span {
+  position: relative;
+  transition: var(--transition-base);
+}
+
+.navmenu a:hover span,
+.navmenu .active span {
+  color: var(--contrast-color);
+}
+
 .navmenu a:hover,
 .navmenu .active,
 .navmenu .active:focus {
   color: var(--nav-hover-color);
-  background: rgba(0, 217, 255, 0.05);
-  transform: translateX(5px);
-  text-shadow: 0 0 10px rgba(0, 217, 255, 0.3);
+  background: linear-gradient(90deg, 
+    rgba(0, 217, 255, 0.08) 0%,
+    rgba(0, 217, 255, 0.03) 100%);
+  transform: translateX(8px);
+  box-shadow: inset 3px 0 0 var(--accent-color);
+}
+
+.navmenu a:hover .navicon,
+.navmenu .active .navicon {
+  transform: scale(1.2) rotate(5deg);
+  color: var(--accent-color);
 }
 
 .navmenu a:hover .navicon,
@@ -562,15 +668,48 @@ h6 {
 /*--------------------------------------------------------------
 # Global Footer
 --------------------------------------------------------------*/
-/* Hero overlay */
+/* Hero background elements */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .hero-overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, 
-    rgba(10, 14, 39, 0.9) 0%, 
-    rgba(26, 31, 58, 0.8) 50%, 
-    rgba(15, 23, 41, 0.9) 100%);
+    rgba(10, 14, 39, 0.92) 0%, 
+    rgba(26, 31, 58, 0.85) 50%, 
+    rgba(15, 23, 41, 0.92) 100%);
   z-index: 2;
+}
+
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(0, 217, 255, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+  z-index: 3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 4;
+}
+
+.hero-text-wrapper {
+  max-width: 800px;
+}
+
+.hero-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: var(--space-lg);
+  font-weight: 300;
+  max-width: 600px;
 }
 
 /* Footer enhancements */

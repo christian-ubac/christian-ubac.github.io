@@ -1,27 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
   <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Christian Ubac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Christian Ubac | Creative Designer & Full-Stack Developer Portfolio</title>
+    <meta name="title" content="Christian Ubac | Creative Designer & Full-Stack Developer" />
     <meta
       name="description"
-      content="Personal portfolio of Christian Ubac, showcasing design, development, and photography skills."
+      content="Professional portfolio of Christian Ubac - Creative Designer, Full-Stack Developer, Freelancer, and Photographer. Specializing in modern web development, UI/UX design, and digital photography."
     />
     <meta
       name="keywords"
-      content="Christian Ubac, Designer, Developer, Freelancer, Photographer, Portfolio"
+      content="Christian Ubac, Web Developer, Full-Stack Developer, UI/UX Designer, Creative Designer, Freelancer, Photographer, Portfolio, Web Design, Frontend Development, Backend Development, Photography"
     />
+    <meta name="author" content="Christian Ubac" />
+    <meta name="theme-color" content="#0a0e27" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://christian-ubac.github.io/" />
+    <meta property="og:title" content="Christian Ubac | Creative Designer & Full-Stack Developer" />
+    <meta property="og:description" content="Professional portfolio showcasing creative design, full-stack development, and photography work." />
+    <meta property="og:image" content="https://christian-ubac.github.io/assets/img/christian.jpg" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://christian-ubac.github.io/" />
+    <meta name="twitter:title" content="Christian Ubac | Creative Designer & Full-Stack Developer" />
+    <meta name="twitter:description" content="Professional portfolio showcasing creative design, full-stack development, and photography work." />
+    <meta name="twitter:image" content="https://christian-ubac.github.io/assets/img/christian.jpg" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://christian-ubac.github.io/" />
 
     <!-- Favicons -->
     <link href="/assets/img/Christian Ubac.png" rel="icon" />
     <link href="/assets/img/Christian Ubac.png" rel="apple-touch-icon" />
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <!-- Fonts - Optimized Loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
 
@@ -47,47 +74,90 @@
 
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Christian Ubac",
+      "url": "https://christian-ubac.github.io/",
+      "image": "https://christian-ubac.github.io/assets/img/christian.jpg",
+      "jobTitle": "Full-Stack Developer & Creative Designer",
+      "description": "Creative Designer, Full-Stack Developer, Freelancer, and Photographer",
+      "sameAs": [
+        "https://github.com/christian-ubac",
+        "https://www.facebook.com/profile.php?id=100069360927169",
+        "https://x.com/Zenitsous45"
+      ],
+      "knowsAbout": [
+        "Web Development",
+        "UI/UX Design",
+        "Full-Stack Development",
+        "Photography",
+        "Graphic Design"
+      ]
+    }
+    </script>
   </head>
 
-  <body class="index-page">
-    <header id="header" class="header dark-background d-flex flex-column">
-      <i class="header-toggle d-xl-none bi bi-list"></i>
+  <body class="index-page" itemscope itemtype="https://schema.org/WebPage">
+    <!-- Skip to main content for accessibility -->
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
+    
+    <header id="header" class="header dark-background d-flex flex-column" role="banner">
+      <i class="header-toggle d-xl-none bi bi-list" aria-label="Toggle navigation menu"></i>
 
-      <a
-        href="index.html"
-        class="logo d-flex align-items-center justify-content-center"
-      >
-        <h1 class="site-logo">Christian Ubac</h1>
-      </a>
+      <div class="profile-section">
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center justify-content-center"
+          aria-label="Christian Ubac - Home"
+        >
+          <h1 class="site-logo">
+            <span class="logo-first">Christian</span>
+            <span class="logo-last">Ubac</span>
+          </h1>
+        </a>
+        <p class="tagline">Creative Developer & Designer</p>
+      </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="index.html" class="active">
-              <i class="bi bi-house navicon"></i>Home
+      <nav id="navmenu" class="navmenu" role="navigation" aria-label="Main navigation">
+        <ul role="menubar">
+          <li role="none">
+            <a href="index.html" class="active" role="menuitem" aria-current="page">
+              <i class="bi bi-house navicon" aria-hidden="true"></i>
+              <span>Home</span>
             </a>
           </li>
-          <li>
-            <a href="about.html"> <i class="bi bi-person navicon"></i>About </a>
-          </li>
-          <li>
-            <a href="resume.html">
-              <i class="bi bi-file-earmark-text navicon"></i>Resume
+          <li role="none">
+            <a href="about.html" role="menuitem">
+              <i class="bi bi-person navicon" aria-hidden="true"></i>
+              <span>About</span>
             </a>
           </li>
-          <li>
-            <a href="portfolio.html">
-              <i class="bi bi-images navicon"></i>Portfolio
+          <li role="none">
+            <a href="resume.html" role="menuitem">
+              <i class="bi bi-file-earmark-text navicon" aria-hidden="true"></i>
+              <span>Resume</span>
             </a>
           </li>
-          <li>
-            <a href="services.html">
-              <i class="bi bi-briefcase navicon"></i>Services
+          <li role="none">
+            <a href="portfolio.html" role="menuitem">
+              <i class="bi bi-images navicon" aria-hidden="true"></i>
+              <span>Portfolio</span>
             </a>
           </li>
-          <li>
-            <a href="contact.html">
-              <i class="bi bi-telephone navicon"></i>Contact
+          <li role="none">
+            <a href="services.html" role="menuitem">
+              <i class="bi bi-briefcase navicon" aria-hidden="true"></i>
+              <span>Services</span>
+            </a>
+          </li>
+          <li role="none">
+            <a href="contact.html" role="menuitem">
+              <i class="bi bi-telephone navicon" aria-hidden="true"></i>
+              <span>Contact</span>
             </a>
           </li>
         </ul>
@@ -95,9 +165,9 @@
       </nav>
     </header>
 
-    <main class="main">
+    <main class="main" role="main" id="main-content">
       <!-- Hero Section -->
-      <section id="hero" class="hero section dark-background">
+      <section id="hero" class="hero section dark-background" aria-labelledby="hero-title">
         <!-- Snow effect container -->
         <img
           src="assets/img/christian.jpg"
