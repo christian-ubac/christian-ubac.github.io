@@ -1,6 +1,31 @@
 (function () {
   "use strict";
 
+  // Remove preloader immediately with timeout (runs before DOM ready)
+  const preloader = document.querySelector("#preloader");
+  if (preloader) {
+    let preloaderRemoved = false;
+    
+    const removePreloader = () => {
+      if (!preloaderRemoved && preloader) {
+        preloaderRemoved = true;
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          if (preloader && preloader.parentNode) {
+            preloader.remove();
+          }
+        }, 200);
+      }
+    };
+    
+    // Force remove after 800ms maximum (fast loading)
+    setTimeout(removePreloader, 800);
+    
+    // Also remove on page load if it happens sooner
+    window.addEventListener("load", removePreloader);
+    document.addEventListener("DOMContentLoaded", removePreloader);
+  }
+
   /**
    * Enhanced UI/UX animations and interactions
    */
@@ -281,27 +306,6 @@
     });
   });
 
-  // Preloader with timeout
-  const preloader = document.querySelector("#preloader");
-  if (preloader) {
-    let preloaderRemoved = false;
-    
-    const removePreloader = () => {
-      if (!preloaderRemoved) {
-        preloaderRemoved = true;
-        preloader.style.opacity = '0';
-        setTimeout(() => {
-          preloader.remove();
-        }, 300);
-      }
-    };
-    
-    // Remove on page load
-    window.addEventListener("load", removePreloader);
-    
-    // Force remove after 2 seconds maximum
-    setTimeout(removePreloader, 2000);
-  }
   // Enhanced theme system - colors now controlled by theme toggler
   // Removed automatic color changing to maintain design consistency
 
