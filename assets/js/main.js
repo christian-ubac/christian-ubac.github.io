@@ -16,6 +16,8 @@
     initDynamicNavigation();
     initSmartPreloader();
     initParallaxEffect();
+    init3DForm();
+    init3DProfileCard();
   });
   
   /**
@@ -511,5 +513,68 @@ document.addEventListener("DOMContentLoaded", function () {
     
     // Initial update
     updateParallax();
+  }
+  
+  /**
+   * 3D Mouse Tracking Effect for Contact Form
+   */
+  function init3DForm() {
+    const form = document.querySelector('.form-3d');
+    if (!form) return;
+    
+    const inputs = form.querySelectorAll('.form-control');
+    
+    form.addEventListener('mousemove', (e) => {
+      const rect = form.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const rotateX = ((y - rect.height / 2) / rect.height) * 8;
+      const rotateY = ((x - rect.width / 2) / rect.width) * 8;
+      
+      form.style.transform = `rotateX(${rotateX}deg) rotateY(${-rotateY}deg)`;
+    });
+    
+    form.addEventListener('mouseleave', () => {
+      form.style.transform = 'rotateX(0) rotateY(0)';
+    });
+    
+    // Floating label animation for inputs
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.classList.add('focused');
+      });
+      
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.parentElement.classList.remove('focused');
+        }
+      });
+    });
+  }
+  
+  /**
+   * 3D Profile Card Mouse Tracking
+   */
+  function init3DProfileCard() {
+    const profileCard = document.querySelector('.profile-card-3d');
+    if (!profileCard) return;
+    
+    const cardInner = profileCard.querySelector('.profile-card-inner');
+    
+    profileCard.addEventListener('mousemove', (e) => {
+      const rect = profileCard.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const rotateX = ((y - rect.height / 2) / rect.height) * 15;
+      const rotateY = ((x - rect.width / 2) / rect.width) * 15;
+      
+      cardInner.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+    });
+    
+    profileCard.addEventListener('mouseleave', () => {
+      cardInner.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+    });
   }
 });
