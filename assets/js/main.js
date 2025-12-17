@@ -281,12 +281,26 @@
     });
   });
 
-  // Preloader
+  // Preloader with timeout
   const preloader = document.querySelector("#preloader");
   if (preloader) {
-    window.addEventListener("load", () => {
-      preloader.remove();
-    });
+    let preloaderRemoved = false;
+    
+    const removePreloader = () => {
+      if (!preloaderRemoved) {
+        preloaderRemoved = true;
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+          preloader.remove();
+        }, 300);
+      }
+    };
+    
+    // Remove on page load
+    window.addEventListener("load", removePreloader);
+    
+    // Force remove after 2 seconds maximum
+    setTimeout(removePreloader, 2000);
   }
   // Enhanced theme system - colors now controlled by theme toggler
   // Removed automatic color changing to maintain design consistency
