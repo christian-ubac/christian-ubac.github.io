@@ -18,6 +18,7 @@
     initParallaxEffect();
     init3DForm();
     init3DProfileCard();
+    initContactForm();
   });
   
   /**
@@ -575,6 +576,76 @@ document.addEventListener("DOMContentLoaded", function () {
     
     profileCard.addEventListener('mouseleave', () => {
       cardInner.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+    });
+  }
+  
+  /**
+   * Contact Form Handler
+   */
+  function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('name-field').value,
+        email: document.getElementById('email-field').value,
+        subject: document.getElementById('subject-field').value,
+        message: document.getElementById('message-field').value
+      };
+      
+      // Validate form
+      if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+        alert('Please fill in all fields');
+        return;
+      }
+      
+      // Show loading state
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // Create mailto link as fallback
+      const mailtoLink = `mailto:christianubac789@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
+      
+      // Try to send via FormSubmit.co (serverless form handler)
+      fetch('https://formspree.io/f/xyzpvjwn', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        if (response.ok) {
+          // Show success message
+          const successDiv = document.createElement('div');
+          successDiv.className = 'alert alert-success';
+          successDiv.textContent = 'Message sent successfully! Thank you for contacting me.';
+          form.parentElement.insertBefore(successDiv, form);
+          
+          // Reset form
+          form.reset();
+          
+          // Remove success message after 5 seconds
+          setTimeout(() => successDiv.remove(), 5000);
+        } else {
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch(error => {
+        console.log('FormSpree failed, opening email client as fallback...');
+        // Fallback: open mailto link
+        window.location.href = mailtoLink;
+      })
+      .finally(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+      });
     });
   }
 });
