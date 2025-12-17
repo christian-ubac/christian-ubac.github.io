@@ -276,15 +276,21 @@ h6 {
   background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
   color: #fff;
   border: none;
-  padding: 14px 32px;
-  border-radius: 50px;
+  padding: 1rem 2rem;
+  min-width: 160px;
+  height: 52px;
+  border-radius: 9999px;
   cursor: pointer;
   font-weight: 600;
-  font-size: 15px;
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  line-height: 1.5;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
   position: relative;
   overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .php-email-form button::before {
@@ -830,15 +836,15 @@ h6 {
   position: fixed;
   visibility: hidden;
   opacity: 0;
-  right: 15px;
-  bottom: -15px;
+  right: 1.5rem;
+  bottom: -1.5rem;
   z-index: 99999;
   background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 5px 20px rgba(0, 217, 255, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 217, 255, 0.4);
   border: 2px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   display: flex;
@@ -1293,26 +1299,40 @@ section,
   color: #fff;
 }
 
-/* Hero CTA buttons */
+/* Hero CTA buttons - Tailwind Enhanced */
 .hero-cta {
-  margin-top: 40px;
+  margin-top: 2rem;
   display: flex;
-  gap: 20px;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 
+.hero-cta a i {
+  transition: transform 0.3s ease;
+}
+
+.hero-cta a:hover i {
+  transform: translateX(4px);
+}
+
 .btn-outline {
-  padding: 12px 32px;
+  padding: 1rem 2rem;
+  min-width: 180px;
+  height: 52px;
   background: transparent;
   color: var(--accent-color);
   border: 2px solid var(--accent-color);
-  border-radius: 50px;
+  border-radius: 9999px;
   font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-outline::before {
@@ -2069,7 +2089,7 @@ img.loaded {
   filter: blur(0);
 }
 
-/* Responsive improvements */
+/* Responsive improvements - Tailwind Enhanced */
 @media (max-width: 768px) {
   .hero-title .name {
     font-size: 48px;
@@ -2092,8 +2112,8 @@ img.loaded {
   }
   
   .social-links a {
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     font-size: 20px;
   }
   
@@ -2103,9 +2123,17 @@ img.loaded {
   }
   
   .btn-modern,
-  .btn-outline {
+  .btn-outline,
+  .php-email-form button {
     width: 100%;
+    min-width: 100%;
     text-align: center;
+    justify-content: center;
+  }
+  
+  .scroll-top {
+    width: 48px;
+    height: 48px;
   }
   
   .footer-content {
@@ -2469,18 +2497,26 @@ img.loaded {
               0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Improved Button Styles */
+/* Improved Button Styles - Tailwind Enhanced */
 .btn-modern {
   position: relative;
-  padding: 12px 32px;
+  padding: 1rem 2rem;
+  min-width: 180px;
+  height: 52px;
   background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
   color: white;
   border: none;
-  border-radius: 50px;
+  border-radius: 9999px;
   font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .btn-modern::before {

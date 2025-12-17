@@ -52,6 +52,27 @@
       rel="stylesheet"
     />
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#00d9ff',
+              secondary: '#7c3aed',
+              dark: '#0a0e27',
+            },
+            fontFamily: {
+              display: ['Inter', 'Poppins', 'sans-serif'],
+              heading: ['Poppins', 'sans-serif'],
+              body: ['Roboto', 'sans-serif'],
+            },
+          }
+        }
+      }
+    </script>
+
     <!-- Vendor CSS Files -->
     <link
       href="assets/vendor/bootstrap/css/bootstrap.min.css"
@@ -234,9 +255,15 @@
               <i class="bi bi-discord" aria-hidden="true"></i>
             </a>
           </div>
-          <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
-            <a href="portfolio.html" class="btn-modern">View My Work</a>
-            <a href="contact.html" class="btn-outline">Get In Touch</a>
+          <div class="hero-cta flex flex-wrap gap-4 mt-8" data-aos="fade-up" data-aos-delay="400">
+            <a href="portfolio.html" class="btn-modern inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-gradient-to-r from-primary to-secondary rounded-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 min-w-[180px]">
+              <span>View My Work</span>
+              <i class="bi bi-arrow-right ml-2"></i>
+            </a>
+            <a href="contact.html" class="btn-outline inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-primary border-2 border-primary rounded-full hover:bg-primary/10 hover:-translate-y-1 transition-all duration-300 min-w-[180px]">
+              <span>Get In Touch</span>
+              <i class="bi bi-envelope ml-2"></i>
+            </a>
           </div>
         </div>
       </section>
