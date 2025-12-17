@@ -73,30 +73,13 @@
     });
   }
 
-  // Theme Color Toggle with smooth transitions
-  const themeColor = document.querySelectorAll(".theme-toggler span");
-  if (themeColor) {
-    themeColor.forEach((color) =>
-      color.addEventListener("click", () => {
-        let background = color.style.background;
-        
-        // Add smooth transition effect
-        document.body.style.transition = 'background 1s ease';
-        document.querySelector("body").style.background = background;
-        
-        // Add visual feedback
-        color.style.transform = 'scale(1.3)';
-        setTimeout(() => {
-          color.style.transform = 'scale(1)';
-        }, 200);
-        
-        // Update all sections with matching theme
-        document.querySelectorAll('section, .section').forEach(section => {
-          section.style.transition = 'background 1s ease';
-        });
-      })
-    );
-  }
+  // Enhanced UI interactions
+  // Add smooth hover effects to all links
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('mouseenter', function() {
+      this.style.transition = 'all 0.3s ease';
+    });
+  });
 
   document.addEventListener("scroll", toggleScrolled);
   window.addEventListener("load", toggleScrolled);

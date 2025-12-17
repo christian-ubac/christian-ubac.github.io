@@ -1,4 +1,4 @@
-/**
+1/**
 * Template Name: iPortfolio
 * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
 * Updated: Jun 29 2024 with Bootstrap v5.3.3
@@ -191,23 +191,59 @@ h6 {
   margin-bottom: 24px;
 }
 .php-email-form .form-control {
-  border-radius: 4px;
-  border: 1px solid #ced4da;
-  padding: 10px;
+  border-radius: 12px;
+  border: 2px solid rgba(0, 217, 255, 0.2);
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--default-color);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.php-email-form .form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(0, 217, 255, 0.1),
+              0 0 20px rgba(0, 217, 255, 0.2);
+  outline: none;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .php-email-form button {
-  background-color: #007bff;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 14px 32px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.php-email-form button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.php-email-form button:hover::before {
+  width: 300px;
+  height: 300px;
 }
 
 .php-email-form button:hover {
-  background-color: #0056b3;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 217, 255, 0.5);
 }
 
 .php-email-form .loading,
@@ -289,8 +325,12 @@ h6 {
   font-size: 24px;
   margin: 0;
   font-weight: 700;
-  color: var(--heading-color);
-  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 30px rgba(0, 217, 255, 0.3);
 }
 
 .header .social-links {
@@ -628,9 +668,10 @@ h6 {
 }
 
 .scroll-top:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 10px 30px rgba(0, 217, 255, 0.5),
-              0 0 20px rgba(124, 58, 237, 0.4);
+  transform: translateY(-5px) scale(1.15);
+  box-shadow: 0 12px 40px rgba(0, 217, 255, 0.6),
+              0 0 30px rgba(124, 58, 237, 0.5),
+              inset 0 0 20px rgba(255, 255, 255, 0.1);
   background: linear-gradient(135deg, var(--accent-secondary), var(--accent-color));
 }
 
@@ -747,7 +788,19 @@ section,
   height: 4px;
   background: linear-gradient(90deg, var(--accent-color), var(--accent-secondary));
   border-radius: 2px;
-  box-shadow: 0 0 10px rgba(0, 217, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 217, 255, 0.6);
+  animation: slideRight 1s ease;
+}
+
+@keyframes slideRight {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 60px;
+    opacity: 1;
+  }
 }
 
 .section-title h2:after {
@@ -940,9 +993,10 @@ section,
 }
 
 .social-links a:hover {
-  transform: translateY(-5px) scale(1.1);
-  box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4),
-              0 0 20px rgba(124, 58, 237, 0.3);
+  transform: translateY(-5px) scale(1.15) rotate(5deg);
+  box-shadow: 0 12px 35px rgba(0, 217, 255, 0.5),
+              0 0 25px rgba(124, 58, 237, 0.4),
+              inset 0 0 20px rgba(255, 255, 255, 0.1);
   border-color: var(--accent-color);
 }
 
@@ -2004,69 +2058,88 @@ a:hover::after {
 }
 
 /*--------------------------------------------------------------
-# Theme Toggler
+# Enhanced UI Components
 --------------------------------------------------------------*/
-.theme-toggler {
-  position: fixed;
-  right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 9999;
-  background: rgba(10, 14, 39, 0.8);
-  backdrop-filter: blur(20px);
-  padding: 15px 10px;
-  border-radius: 30px;
-  border: 2px solid rgba(0, 217, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: all 0.3s ease;
-}
 
-.theme-toggler:hover {
-  transform: translateY(-50%) scale(1.05);
-  box-shadow: 0 10px 40px rgba(0, 217, 255, 0.3);
-}
-
-.theme-toggler span {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+/* Modern Card Styles */
+.modern-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
 }
 
-.theme-toggler span::before {
+.modern-card::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: inherit;
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.05), transparent);
+  transition: left 0.6s ease;
 }
 
-.theme-toggler span:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 20px currentColor;
-  border-color: rgba(255, 255, 255, 0.5);
+.modern-card:hover::before {
+  left: 100%;
 }
 
-.theme-toggler span:active {
-  transform: scale(0.95);
+.modern-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(0, 217, 255, 0.3);
+  box-shadow: 0 15px 40px rgba(0, 217, 255, 0.15),
+              0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 768px) {
-  .theme-toggler {
-    right: 10px;
-    padding: 10px 8px;
-  }
-  
-  .theme-toggler span {
-    width: 30px;
-    height: 30px;
-  }
+/* Improved Button Styles */
+.btn-modern {
+  position: relative;
+  padding: 12px 32px;
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 217, 255, 0.3);
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-modern:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 217, 255, 0.4);
+}
+
+/* Enhanced Text Styles */
+.text-gradient {
+  background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
 }
