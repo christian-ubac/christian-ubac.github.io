@@ -3,12 +3,23 @@
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="theme-color" content="#0a0e27" />
+    <link rel="canonical" href="https://christian-ubac.github.io/contact.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Contact Christian Ubac - Designer, Developer & Photographer" />
+    <meta property="og:description" content="Get in touch with Christian Ubac for design, development, and photography inquiries." />
+    <meta property="og:image" content="https://christian-ubac.github.io/assets/img/christian.jpg" />
+    <meta property="og:url" content="https://christian-ubac.github.io/contact.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Contact Christian Ubac - Designer, Developer & Photographer" />
+    <meta name="twitter:description" content="Get in touch with Christian Ubac for design, development, and photography inquiries." />
+    <meta name="twitter:image" content="https://christian-ubac.github.io/assets/img/christian.jpg" />
     <title>Contact Christian Ubac - Designer, Developer & Photographer</title>
     <meta name="description" content="Get in touch with Christian Ubac for design, development, and photography inquiries." />
     <meta name="keywords" content="Contact, Christian Ubac, Designer, Developer, Photographer, Collaboration" />
 
     <!-- Favicons -->
-    <link href="/assets/img/Christian Ubac.png" rel="icon" />
+    <link href="assets/img/Christian Ubac.png" rel="icon" />
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
     <!-- Fonts -->
@@ -53,6 +64,7 @@
   </head>
 
   <body class="contact-page">
+    <a href="#main-content" class="skip-to-main">Skip to main content</a>
     <header id="header" class="header dark-background d-flex flex-column">
       <i class="header-toggle d-xl-none bi bi-list"></i>
 
@@ -92,7 +104,7 @@
         ></a>
       </div>
 
-      <nav id="navmenu" class="navmenu">
+      <nav id="navmenu" class="navmenu" role="navigation" aria-label="Main navigation">
         <ul>
           <li>
             <a href="index.html">
@@ -118,7 +130,7 @@
             >
           </li>
           <li>
-            <a href="contact.html" class="active">
+            <a href="contact.html" class="active" aria-current="page">
               <i class="bi bi-telephone navicon"></i>Contact
             </a>
           </li>
@@ -127,7 +139,7 @@
       </nav>
     </header>
 
-    <main class="main">
+    <main class="main" id="main-content">
       <!-- Page Title -->
       <div class="page-title" data-aos="fade">
         <div class="heading">
@@ -179,7 +191,7 @@
                     <p>
                       <a
                         href="https://www.google.com/maps?q=Maguinda,+Butuan+City,+Philippines"
-                        target="_blank"
+                        target="_blank" rel="noopener noreferrer"
                       >
                         Maguinda, Butuan City, Philippines
                       </a>
@@ -226,6 +238,8 @@
                 class="php-email-form form-3d"
                 data-aos="fade-up"
                 data-aos-delay="200"
+                action="forms/contact.php"
+                method="post"
               >
                 <div class="row gy-4">
                   <div class="col-md-6">
